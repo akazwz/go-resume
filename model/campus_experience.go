@@ -2,6 +2,7 @@ package model
 
 import "time"
 
+// CampusExperience 校园经历
 type CampusExperience struct {
 	ExperienceName string    `json:"experience_name" gorm:"comment:经历名称 type:string(30)"`
 	Role           string    `json:"role" gorm:"comment:角色 type:string(30)"`

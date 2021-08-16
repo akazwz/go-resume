@@ -2,6 +2,7 @@ package model
 
 import "time"
 
+// Internship 实习经历
 type Internship struct {
 	Company        string    `json:"company" gorm:"comment:公司 type:string(30)"`
 	Position       string    `json:"position" gorm:"comment:职位 type:string(30)"`
