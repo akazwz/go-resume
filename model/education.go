@@ -4,6 +4,7 @@ import "time"
 
 // Education 教育经历
 type Education struct {
+	ResumeID
 	School        string    `json:"school" gorm:"comment:学校 type:string(30)"`
 	Major         string    `json:"major" gorm:"comment:专业 type:string(30)"`
 	Start         time.Time `json:"start" gorm:"comment:开始就读"`

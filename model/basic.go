@@ -1,9 +1,12 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 // BasicInfo 基本信息
 type BasicInfo struct {
+	ResumeID
 	Name            string    `json:"name" gorm:"comment:名字 type:string(30)"`
 	Gender          uint8     `json:"gender" gorm:"comment:性别 type:int(1)"`
 	Birthday        time.Time `json:"birthday" gorm:"comment:生日"`

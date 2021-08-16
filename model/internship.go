@@ -4,6 +4,7 @@ import "time"
 
 // Internship 实习经历
 type Internship struct {
+	ResumeID
 	Company        string    `json:"company" gorm:"comment:公司 type:string(30)"`
 	Position       string    `json:"position" gorm:"comment:职位 type:string(30)"`
 	Start          time.Time `json:"start" gorm:"comment:开始时间"`
