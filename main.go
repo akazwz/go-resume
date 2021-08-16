@@ -2,17 +2,21 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
+	"go-resume/initialize"
 	"net/http"
 )
 
 func main() {
 	fmt.Println("Hello Gin!")
-	r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"code":    2000,
-			"message": "index",
-		})
-	})
+	routers := initialize.Routers()
+	addr := ":8000"
+	server := &http.Server{
+		Addr:           addr,
+		Handler:        routers,
+		MaxHeaderBytes: 1 << 20,
+	}
+
+	if err := server.ListenAndServe(); err != nil {
+		fmt.Println(`System Serve Start Error`)
+	}
 }
