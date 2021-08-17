@@ -36,3 +36,26 @@ func Teapot(c *gin.Context) {
 			" However, known implementations do exist.",
 	})
 }
+
+func CommonFailed(code int, message string, c *gin.Context) {
+	c.JSON(http.StatusBadRequest, Response{
+		Code: code,
+		Msg:  message,
+	})
+}
+
+func CommonSuccess(code int, message string, data interface{}, c *gin.Context) {
+	c.JSON(http.StatusOK, Response{
+		Code: code,
+		Msg:  message,
+		Data: data,
+	})
+}
+
+func Created(code int, message string, data interface{}, c *gin.Context) {
+	c.JSON(http.StatusCreated, Response{
+		Code: code,
+		Msg:  message,
+		Data: data,
+	})
+}

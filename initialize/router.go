@@ -6,6 +6,7 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"go-resume/model/response"
+	"go-resume/routers"
 )
 
 func Routers() *gin.Engine {
@@ -23,5 +24,8 @@ func Routers() *gin.Engine {
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	// Teapot
 	router.GET("teapot", response.Teapot)
+	routerGroup := router.Group("")
+	routers.InitBasicInfoRouter(routerGroup)
+	routers.InitResumeRouter(routerGroup)
 	return router
 }
