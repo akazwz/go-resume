@@ -2,12 +2,18 @@ package main
 
 import (
 	"fmt"
+	"go-resume/global"
 	"go-resume/initialize"
 	"net/http"
 )
 
 func main() {
 	fmt.Println("Hello Gin!")
+	global.GDB = initialize.InitDB()
+	if global.GDB != nil {
+		initialize.CreateTables(global.GDB)
+	}
+
 	routers := initialize.Routers()
 	addr := ":8000"
 	server := &http.Server{
