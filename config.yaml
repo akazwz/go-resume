@@ -1,0 +1,12 @@
+server:
+  mode: debug
+  addr: 8000
+  readTimeout: 60
+  writeTimeout: 60
+
+database:
+  type: mysql
+  user: root
+  password: zm159539
+  host: 119.23.41.153:3306
+  name: resume

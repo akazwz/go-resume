@@ -33,6 +33,17 @@ func InitDB() *gorm.DB {
 func CreateTables(db *gorm.DB) {
 	err := db.AutoMigrate(
 		model.BasicInfo{},
+		model.CampusExperience{},
+		model.Certificate{},
+		model.Custom{},
+		model.Education{},
+		model.Hobby{},
+		model.Internship{},
+		model.JobObjective{},
+		model.Program{},
+		model.SelfAppraisal{},
+		model.Skill{},
+		model.WorkExperience{},
 	)
 	if err != nil {
 		os.Exit(0)
