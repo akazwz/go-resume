@@ -9,6 +9,18 @@ import (
 	"go-resume/service"
 )
 
+// CreateResume 新建简历
+// @Summary 新建简历
+// @Title 新建简历
+// @Author 赵文卓
+// @Description 新建简历
+// @Tags resume
+// @Accept json
+// @Produce json
+// @Param Resume body request.Resume true "json"
+// @Success 201 {object} model.Resume
+// @Failure 400 {object} response.Response
+// @Router /resume [post]
 func CreateResume(c *gin.Context) {
 	var resume request.Resume
 	if err := c.ShouldBindJSON(&resume); err != nil {

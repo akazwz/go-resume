@@ -3,12 +3,27 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	_ "github.com/akazwz/go-resume/docs"
 	"github.com/gin-gonic/gin"
 	"go-resume/global"
 	"go-resume/initialize"
 	"net/http"
 )
 
+// @title Golang Resume Api
+// @version 1.0
+// @description Golang Resume ASpi
+// @termsOfService https://akazwz.com
+
+// @contact.name API Support
+// @contact.url https://akazwz.com
+// @contact.email akazwz@pm.me
+
+// @license.name MIT
+// @license.url MIT
+
+// @host localhost:8000
+// @BasePath /
 func main() {
 	fmt.Println("Hello Gin!")
 
