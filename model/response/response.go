@@ -24,3 +24,15 @@ func NotFound(c *gin.Context) {
 		Msg:  "404 not found",
 	})
 }
+
+// Teapot 418 teapot
+func Teapot(c *gin.Context) {
+	c.JSON(http.StatusTeapot, gin.H{
+		"message": "I'm a teapot",
+		"story": "This code was defined in 1998 " +
+			"as one of the traditional IETF April Fools' jokes," +
+			" in RFC 2324, Hyper Text Coffee Pot Control Protocol," +
+			" and is not expected to be implemented by actual HTTP servers." +
+			" However, known implementations do exist.",
+	})
+}
