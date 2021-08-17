@@ -20,7 +20,7 @@ import (
 // @contact.email akazwz@pm.me
 
 // @license.name MIT
-// @license.url MIT
+// @license.url https://mit-license.org/
 
 // @host localhost:8000
 // @BasePath /
