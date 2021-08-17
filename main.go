@@ -25,6 +25,7 @@ import (
 // @host localhost:8000
 // @BasePath /
 func main() {
+
 	fmt.Println("Hello Gin!")
 
 	// 初始化配置
