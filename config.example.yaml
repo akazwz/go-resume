@@ -7,6 +7,6 @@ server:
 database:
   type: mysql
   user: root
-  password: zm159539
-  host: 119.23.41.153:3306
+  password: xxxxxxx
+  host: xxx.xx.xx.xxx:3306
   name: resume
