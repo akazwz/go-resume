@@ -46,6 +46,7 @@ func CreateTables(db *gorm.DB) {
 		model.Skill{},
 		model.WorkExperience{},
 	)
+
 	if err != nil {
 		os.Exit(0)
 	}

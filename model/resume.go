@@ -9,11 +9,11 @@ import (
 type Resume struct {
 	gorm.Model
 	UserID     uuid.UUID `json:"user_id" gorm:"comment:用户id"`
-	ResumeID   uuid.UUID `json:"resume_id" gorm:"comment:简历id"`
-	ResumeName string    `json:"resume_name" gorm:"comment:简历名称;type:string(30)"`
+	ResumeID   uuid.UUID `json:"resume_id" gorm:"comment:简历id;primaryKey;unique"`
+	ResumeName string    `json:"resume_name" gorm:"comment:简历名称;type:varchar(30)"`
 }
 
 // ResumeID 简历id
 type ResumeID struct {
-	ResumeID uuid.UUID `json:"resume_id" gorm:"comment:简历id;foreignKey"`
+	ResumeID uuid.UUID `json:"resume_id" gorm:"comment:简历id;"`
 }
