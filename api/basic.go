@@ -6,7 +6,9 @@ import (
 	"go-resume/model"
 	"go-resume/model/request"
 	"go-resume/model/response"
+	"go-resume/pkg"
 	"go-resume/service"
+	"log"
 )
 
 // CreateBasicInfo 新建基本信息
@@ -24,15 +26,17 @@ import (
 func CreateBasicInfo(c *gin.Context) {
 	var basicInfo request.BasicInfo
 	err := c.ShouldBindJSON(&basicInfo)
+	log.Println(err)
 	if err != nil {
 		response.CommonFailed(CodeErrorBindJson, "Bind Json Error", c)
 		return
 	}
+	birthDay := pkg.StrToTime(basicInfo.BirthDay, "2006-01-02")
 
 	basic := &model.BasicInfo{
 		Name:            basicInfo.Name,
 		Gender:          basicInfo.Gender,
-		Birthday:        basicInfo.BirthDay,
+		Birthday:        birthDay,
 		PhoneNumber:     basicInfo.PhoneNumber,
 		Email:           basicInfo.Email,
 		WorkExperience:  basicInfo.WorkExperience,
