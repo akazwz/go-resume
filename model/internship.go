@@ -1,13 +1,12 @@
 package model
 
 import (
-	"gorm.io/gorm"
 	"time"
 )
 
 // Internship 实习经历
 type Internship struct {
-	gorm.Model
+	Model
 	ResumeID
 	Company        string    `json:"company" gorm:"comment:公司;type:varchar(30)"`
 	Position       string    `json:"position" gorm:"comment:职位;type:varchar(30)"`

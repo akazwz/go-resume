@@ -25,7 +25,7 @@ var doc = `{
         },
         "license": {
             "name": "MIT",
-            "url": "MIT"
+            "url": "https://mit-license.org/"
         },
         "version": "{{.Version}}"
     },
@@ -42,7 +42,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "resume basicInfo"
+                    "basicInfo"
                 ],
                 "summary": "新建基本信息",
                 "parameters": [
@@ -111,20 +111,64 @@ var doc = `{
                     }
                 }
             }
+        },
+        "/resume/{resume_id}": {
+            "delete": {
+                "description": "删除简历",
+                "tags": [
+                    "resume"
+                ],
+                "summary": "删除简历",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Resume ID",
+                        "name": "resume_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "gorm.DeletedAt": {
+            "type": "object",
+            "properties": {
+                "time": {
+                    "type": "string"
+                },
+                "valid": {
+                    "description": "Valid is true if Time is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
         "model.BasicInfo": {
             "type": "object",
             "properties": {
                 "birthday": {
                     "type": "string"
                 },
-                "created_at": {
+                "createdAt": {
                     "type": "string"
                 },
                 "custom_info": {
                     "type": "string"
+                },
+                "deletedAt": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
                 },
                 "email": {
                     "type": "string"
@@ -159,7 +203,7 @@ var doc = `{
                 "resume_id": {
                     "type": "string"
                 },
-                "updated_at": {
+                "updatedAt": {
                     "type": "string"
                 },
                 "work_experience": {
@@ -170,8 +214,11 @@ var doc = `{
         "model.Resume": {
             "type": "object",
             "properties": {
-                "created_at": {
+                "createdAt": {
                     "type": "string"
+                },
+                "deletedAt": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
                 },
                 "id": {
                     "type": "integer"
@@ -182,7 +229,7 @@ var doc = `{
                 "resume_name": {
                     "type": "string"
                 },
-                "updated_at": {
+                "updatedAt": {
                     "type": "string"
                 },
                 "user_id": {
@@ -195,7 +242,6 @@ var doc = `{
             "required": [
                 "birthday",
                 "email",
-                "gender",
                 "name",
                 "phone_number"
             ],
@@ -210,6 +256,7 @@ var doc = `{
                     "type": "string"
                 },
                 "gender": {
+                    "description": "required 字段不能为空和初始值",
                     "type": "integer"
                 },
                 "marriage": {

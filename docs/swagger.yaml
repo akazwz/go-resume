@@ -1,13 +1,23 @@
 basePath: /
 definitions:
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
   model.BasicInfo:
     properties:
       birthday:
         type: string
-      created_at:
+      createdAt:
         type: string
       custom_info:
         type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
       email:
         type: string
       gender:
@@ -30,22 +40,24 @@ definitions:
         type: string
       resume_id:
         type: string
-      updated_at:
+      updatedAt:
         type: string
       work_experience:
         type: string
     type: object
   model.Resume:
     properties:
-      created_at:
+      createdAt:
         type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
       id:
         type: integer
       resume_id:
         type: string
       resume_name:
         type: string
-      updated_at:
+      updatedAt:
         type: string
       user_id:
         type: string
@@ -59,6 +71,7 @@ definitions:
       email:
         type: string
       gender:
+        description: required 字段不能为空和初始值
         type: integer
       marriage:
         type: integer
@@ -81,7 +94,6 @@ definitions:
     required:
     - birthday
     - email
-    - gender
     - name
     - phone_number
     type: object
@@ -109,7 +121,7 @@ info:
   description: Golang Resume ASpi
   license:
     name: MIT
-    url: MIT
+    url: https://mit-license.org/
   termsOfService: https://akazwz.com
   title: Golang Resume Api
   version: "1.0"
@@ -139,7 +151,7 @@ paths:
             $ref: '#/definitions/response.Response'
       summary: 新建基本信息
       tags:
-      - resume basicInfo
+      - basicInfo
   /resume:
     post:
       consumes:
@@ -164,6 +176,25 @@ paths:
           schema:
             $ref: '#/definitions/response.Response'
       summary: 新建简历
+      tags:
+      - resume
+  /resume/{resume_id}:
+    delete:
+      description: 删除简历
+      parameters:
+      - description: Resume ID
+        in: path
+        name: resume_id
+        required: true
+        type: integer
+      responses:
+        "204":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 删除简历
       tags:
       - resume
 swagger: "2.0"

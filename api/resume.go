@@ -41,6 +41,16 @@ func CreateResume(c *gin.Context) {
 	}
 }
 
+// DeleteResume 删除简历
+// @Summary 删除简历
+// @Title 删除简历
+// @Author 赵文卓
+// @Description 删除简历
+// @Tags resume
+// @Param resume_id path int true "Resume ID"
+// @Success 204
+// @Failure 400 {object} response.Response
+// @Router /resume/{resume_id} [delete]
 func DeleteResume(c *gin.Context) {
 	resumeID := c.Param("id")
 	err := service.DeleteResumeService(resumeID)

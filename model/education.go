@@ -1,13 +1,12 @@
 package model
 
 import (
-	"gorm.io/gorm"
 	"time"
 )
 
 // Education 教育经历
 type Education struct {
-	gorm.Model
+	Model
 	ResumeID
 	School        string    `json:"school" gorm:"comment:学校;type:varchar(30)"`
 	Major         string    `json:"major" gorm:"comment:专业;type:varchar(30)"`

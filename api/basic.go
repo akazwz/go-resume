@@ -16,7 +16,7 @@ import (
 // @Title 新建基本信息
 // @Author 赵文卓
 // @Description 新建简历基本信息
-// @Tags resume basicInfo
+// @Tags basicInfo
 // @Accept json
 // @Produce json
 // @Param basicInfo body request.BasicInfo true "json"

@@ -1,13 +1,12 @@
 package model
 
 import (
-	"gorm.io/gorm"
 	"time"
 )
 
 // BasicInfo 基本信息
 type BasicInfo struct {
-	gorm.Model
+	Model
 	// Resume          Resume    `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;foreignKey:ResumeID;references:resume_id"`
 	ResumeID
 	Name            string    `json:"name" gorm:"comment:名字;type:varchar(30)"`
