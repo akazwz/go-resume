@@ -15,5 +15,5 @@ type Resume struct {
 
 // ResumeID 简历id
 type ResumeID struct {
-	ResumeID uuid.UUID `json:"resume_id" gorm:"comment:简历id;"`
+	ResumeID uuid.UUID `json:"resume_id" gorm:"comment:简历id;type:varchar(191)"`
 }
