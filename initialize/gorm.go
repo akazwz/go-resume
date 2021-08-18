@@ -50,4 +50,30 @@ func CreateTables(db *gorm.DB) {
 	if err != nil {
 		os.Exit(0)
 	}
+
+	tables := make([]string, 0)
+
+	tables = append(tables,
+		"basic_infos",
+		"campus_experiences",
+		"job_objectives",
+		"self_appraisals",
+		"internships",
+		"work_experiences",
+		"customs",
+		"programs",
+		"educations",
+		"skills",
+		"certificates",
+		"hobbies")
+
+	// 添加外键约束
+	// 外键约束的名称不能重复
+	for i := 0; i < len(tables); i++ {
+		tableName := tables[i]
+		db.Exec("ALTER TABLE `resume`.`" + tableName + "` " +
+			"ADD CONSTRAINT `" + "fk_resume_id_" + tableName + "` FOREIGN KEY (`resume_id`) " +
+			"REFERENCES `resume`.`resumes` (`resume_id`) " +
+			"ON DELETE CASCADE ON UPDATE CASCADE;")
+	}
 }
