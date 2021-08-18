@@ -40,7 +40,7 @@ func main() {
 	global.GDB = initialize.InitDB()
 	if global.GDB != nil {
 		// 新建表
-		initialize.CreateTables(global.GDB)
+		// initialize.CreateTables(global.GDB)
 		db, _ := global.GDB.DB()
 		// defer关闭数据库
 		defer func(db *sql.DB) {
