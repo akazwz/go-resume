@@ -40,3 +40,13 @@ func CreateResume(c *gin.Context) {
 		response.Created(CodeSuccessCommon, "Success", resumeInter, c)
 	}
 }
+
+func DeleteResume(c *gin.Context) {
+	resumeID := c.Param("id")
+	err := service.DeleteResumeService(resumeID)
+	if err != nil {
+		response.CommonFailed(CodeErrorDB, "DB Error", c)
+		return
+	}
+	response.DeletedNoContent(c)
+}

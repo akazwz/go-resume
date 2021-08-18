@@ -59,3 +59,7 @@ func Created(code int, message string, data interface{}, c *gin.Context) {
 		Data: data,
 	})
 }
+
+func DeletedNoContent(c *gin.Context) {
+	c.JSON(http.StatusNoContent, nil)
+}
