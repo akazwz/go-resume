@@ -41,6 +41,7 @@ func CreateTables(db *gorm.DB) {
 		model.Internship{},
 		model.JobObjective{},
 		model.Program{},
+		model.Resume{},
 		model.SelfAppraisal{},
 		model.Skill{},
 		model.WorkExperience{},

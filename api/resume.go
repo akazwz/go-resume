@@ -30,7 +30,7 @@ func CreateResume(c *gin.Context) {
 
 	r := model.Resume{
 		UserID:     uuid.FromStringOrNil(""),
-		ResumeName: "",
+		ResumeName: resume.ResumeName,
 	}
 
 	if err, resumeInter := service.CreateResumeService(&r); err != nil {
