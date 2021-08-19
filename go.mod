@@ -1,4 +1,4 @@
-module go-resume
+module github.com/akazwz/go-resume
 
 go 1.16
 
