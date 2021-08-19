@@ -1,13 +1,13 @@
 package api
 
 import (
+	"github.com/akazwz/go-resume/model"
+	"github.com/akazwz/go-resume/model/request"
+	"github.com/akazwz/go-resume/model/response"
+	"github.com/akazwz/go-resume/pkg"
+	"github.com/akazwz/go-resume/service"
 	"github.com/gin-gonic/gin"
 	uuid "github.com/satori/go.uuid"
-	"go-resume/model"
-	"go-resume/model/request"
-	"go-resume/model/response"
-	"go-resume/pkg"
-	"go-resume/service"
 	"log"
 )
 

@@ -2,8 +2,8 @@ package api
 
 import (
 	"github.com/akazwz/go-i18n/i18n"
+	"github.com/akazwz/go-resume/model/response"
 	"github.com/gin-gonic/gin"
-	"go-resume/model/response"
 )
 
 func I18nTest(c *gin.Context) {

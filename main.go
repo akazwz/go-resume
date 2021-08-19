@@ -3,10 +3,10 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	_ "github.com/akazwz/go-resume/docs"
+	"github.com/akazwz/go-resume/global"
+	"github.com/akazwz/go-resume/initialize"
 	"github.com/gin-gonic/gin"
-	_ "go-resume/docs"
-	"go-resume/global"
-	"go-resume/initialize"
 	"net/http"
 )
 

@@ -1,9 +1,9 @@
 package service
 
 import (
+	"github.com/akazwz/go-resume/global"
+	"github.com/akazwz/go-resume/model"
 	uuid "github.com/satori/go.uuid"
-	"go-resume/global"
-	"go-resume/model"
 	"time"
 )
 

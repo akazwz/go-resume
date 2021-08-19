@@ -2,9 +2,9 @@ package initialize
 
 import (
 	"fmt"
+	"github.com/akazwz/go-resume/global"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
-	"go-resume/global"
 )
 
 // InitViper 初始化配置

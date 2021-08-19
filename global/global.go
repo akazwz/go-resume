@@ -1,8 +1,8 @@
 package global
 
 import (
+	"github.com/akazwz/go-resume/config"
 	"github.com/spf13/viper"
-	"go-resume/config"
 	"gorm.io/gorm"
 )
 

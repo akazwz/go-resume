@@ -1,8 +1,8 @@
 package routers
 
 import (
+	"github.com/akazwz/go-resume/api"
 	"github.com/gin-gonic/gin"
-	"go-resume/api"
 )
 
 func InitResumeRouter(r *gin.RouterGroup) {

@@ -2,8 +2,8 @@ package initialize
 
 import (
 	"fmt"
-	"go-resume/global"
-	"go-resume/model"
+	"github.com/akazwz/go-resume/global"
+	"github.com/akazwz/go-resume/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"os"

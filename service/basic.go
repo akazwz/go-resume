@@ -1,8 +1,8 @@
 package service
 
 import (
-	"go-resume/global"
-	"go-resume/model"
+	"github.com/akazwz/go-resume/global"
+	"github.com/akazwz/go-resume/model"
 )
 
 func CreateBasicInfoService(bi *model.BasicInfo) (err error, biInter *model.BasicInfo) {

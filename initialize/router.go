@@ -1,13 +1,13 @@
 package initialize
 
 import (
+	"github.com/akazwz/go-resume/api"
+	"github.com/akazwz/go-resume/model/response"
+	"github.com/akazwz/go-resume/routers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"go-resume/api"
-	"go-resume/model/response"
-	"go-resume/routers"
 )
 
 func Routers() *gin.Engine {
