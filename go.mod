@@ -3,6 +3,7 @@ module go-resume
 go 1.16
 
 require (
+	github.com/BurntSushi/toml v0.4.1 // indirect
 	github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6 // indirect
 	github.com/coreos/etcd v3.3.10+incompatible // indirect
 	github.com/coreos/go-etcd v2.0.0+incompatible // indirect
@@ -19,6 +20,7 @@ require (
 	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
+	github.com/nicksnyder/go-i18n/v2 v2.1.2 // indirect
 	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/viper v1.8.1 // indirect

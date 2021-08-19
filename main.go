@@ -26,8 +26,8 @@ import (
 // @BasePath /
 func main() {
 	fmt.Println("Hello Gin!")
-
 	// 初始化配置
+
 	global.VP = initialize.InitViper()
 	if global.VP == nil {
 		fmt.Println("配置文件初始化失败")
