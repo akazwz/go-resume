@@ -8,10 +8,8 @@ import (
 
 func I18nTest(c *gin.Context) {
 	lang := c.Query("lang")
-	if lang == "" {
-		lang = "en"
-	}
 	i := &i18n.I18n{}
-	test := i.Trans("test.test1", lang).ToStr()
+	i.SetLang(lang)
+	test := i.Trans("test.test1").ToStr()
 	response.CommonSuccess(CodeSuccessCommon, test, nil, c)
 }
