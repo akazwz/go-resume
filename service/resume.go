@@ -18,6 +18,20 @@ func CreateResumeService(resume *model.Resume) (err error, r *model.Resume) {
 // DeleteResumeService delete resume by resume id
 func DeleteResumeService(resumeId string) (err error) {
 	resume := model.Resume{ResumeID: uuid.FromStringOrNil(resumeId)}
-	err = global.GDB.Delete(&resume).Error
+	err = global.GDB.Delete(&model.Resume{}, resume).Error
 	return
+}
+
+// UpdateResumeService update resume by resume
+func UpdateResumeService(resume *model.Resume) (err error, rows int64) {
+	var r = model.Resume{ResumeID: resume.ResumeID}
+	result := global.GDB.Model(&r).
+		Updates(model.Resume{ResumeName: resume.ResumeName})
+	return result.Error, result.RowsAffected
+}
+
+// GetResumesService get all resumes
+func GetResumesService() (err error, resumes []model.Resume) {
+	err = global.GDB.Find(&resumes).Error
+	return err, resumes
 }

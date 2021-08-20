@@ -2,3 +2,5 @@ response:
   bindJsonError: 绑定数据错误
   dbError: 数据库错误
   createSuccess: 创建成功
+  updateSuccess: 修改成功
+  success: 成功

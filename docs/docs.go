@@ -32,7 +32,7 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/basic-info": {
+        "/basic-infos": {
             "post": {
                 "description": "新建简历基本信息",
                 "consumes": [
@@ -78,7 +78,7 @@ var doc = `{
                 }
             }
         },
-        "/basic-info/{resume_id}": {
+        "/basic-infos/{resume_id}": {
             "delete": {
                 "description": "删除基本信息",
                 "tags": [
@@ -113,7 +113,33 @@ var doc = `{
                 }
             }
         },
-        "/resume": {
+        "/resumes": {
+            "get": {
+                "description": "获取所有简历",
+                "tags": [
+                    "resumes"
+                ],
+                "summary": "获取所有简历",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Language",
+                        "name": "lang",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            },
             "post": {
                 "description": "新建简历",
                 "consumes": [
@@ -123,7 +149,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "resume"
+                    "resumes"
                 ],
                 "summary": "新建简历",
                 "parameters": [
@@ -159,11 +185,53 @@ var doc = `{
                 }
             }
         },
-        "/resume/{resume_id}": {
+        "/resumes/{resume_id}": {
+            "put": {
+                "description": "更新简历",
+                "tags": [
+                    "resumes"
+                ],
+                "summary": "更新简历",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Resume ID",
+                        "name": "resume_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "json",
+                        "name": "Resume",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.Resume"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Language",
+                        "name": "lang",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            },
             "delete": {
                 "description": "删除简历",
                 "tags": [
-                    "resume"
+                    "resumes"
                 ],
                 "summary": "删除简历",
                 "parameters": [

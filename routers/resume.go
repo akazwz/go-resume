@@ -6,9 +6,11 @@ import (
 )
 
 func InitResumeRouter(r *gin.RouterGroup) {
-	ResumeRouter := r.Group("resume")
+	ResumeRouter := r.Group("resumes")
 	{
 		ResumeRouter.POST("", api.CreateResume)
 		ResumeRouter.DELETE("/:id", api.DeleteResume)
+		ResumeRouter.PUT("/:id", api.UpdateResume)
+		ResumeRouter.GET("", api.GetResumes)
 	}
 }

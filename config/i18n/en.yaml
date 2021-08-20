@@ -2,3 +2,5 @@ response:
   bindJsonError: Bind Json Error
   dbError: Database Error
   createSuccess: Create Success
+  updateSuccess: Update Success
+  success: Success

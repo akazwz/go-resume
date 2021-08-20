@@ -126,7 +126,7 @@ info:
   title: Golang Resume Api
   version: "1.0"
 paths:
-  /basic-info:
+  /basic-infos:
     post:
       consumes:
       - application/json
@@ -156,7 +156,7 @@ paths:
       summary: 新建基本信息
       tags:
       - basicInfo
-  /basic-info/{resume_id}:
+  /basic-infos/{resume_id}:
     delete:
       description: 删除基本信息
       parameters:
@@ -179,7 +179,24 @@ paths:
       summary: 删除基本信息
       tags:
       - basicInfo
-  /resume:
+  /resumes:
+    get:
+      description: 获取所有简历
+      parameters:
+      - description: Language
+        in: query
+        name: lang
+        type: string
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 获取所有简历
+      tags:
+      - resumes
     post:
       consumes:
       - application/json
@@ -208,8 +225,8 @@ paths:
             $ref: '#/definitions/response.Response'
       summary: 新建简历
       tags:
-      - resume
-  /resume/{resume_id}:
+      - resumes
+  /resumes/{resume_id}:
     delete:
       description: 删除简历
       parameters:
@@ -231,5 +248,33 @@ paths:
             $ref: '#/definitions/response.Response'
       summary: 删除简历
       tags:
-      - resume
+      - resumes
+    put:
+      description: 更新简历
+      parameters:
+      - description: Resume ID
+        in: path
+        name: resume_id
+        required: true
+        type: string
+      - description: json
+        in: body
+        name: Resume
+        required: true
+        schema:
+          $ref: '#/definitions/request.Resume'
+      - description: Language
+        in: query
+        name: lang
+        type: string
+      responses:
+        "201":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 更新简历
+      tags:
+      - resumes
 swagger: "2.0"

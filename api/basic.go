@@ -24,7 +24,7 @@ import (
 // @Param lang query string false "Language"
 // @Success 201 {object} model.BasicInfo
 // @Failure 400 {object} response.Response
-// @Router /basic-info [post]
+// @Router /basic-infos [post]
 func CreateBasicInfo(c *gin.Context) {
 	var basicInfo request.BasicInfo
 	err := c.ShouldBindJSON(&basicInfo)
@@ -78,7 +78,7 @@ func CreateBasicInfo(c *gin.Context) {
 // @Param lang query string false "Language"
 // @Success 204
 // @Failure 400 {object} response.Response
-// @Router /basic-info/{resume_id} [delete]
+// @Router /basic-infos/{resume_id} [delete]
 func DeleteBasicInfo(c *gin.Context) {
 	lang := c.Query("lang")
 	i := &i18n.I18n{}
