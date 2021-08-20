@@ -1,6 +1,7 @@
 package api
 
 import (
+	"github.com/akazwz/go-i18n/i18n"
 	"github.com/akazwz/go-resume/model"
 	"github.com/akazwz/go-resume/model/request"
 	"github.com/akazwz/go-resume/model/response"
@@ -27,8 +28,16 @@ func CreateBasicInfo(c *gin.Context) {
 	var basicInfo request.BasicInfo
 	err := c.ShouldBindJSON(&basicInfo)
 	log.Println(err)
+
+	lang := c.Query("lang")
+	i := &i18n.I18n{}
+	i.SetLang(lang)
+	bindJsonError := i.Trans("response.bindJsonError").ToStr()
+	dbError := i.Trans("response.dbError").ToStr()
+	createSuccess := i.Trans("response.createSuccess").ToStr()
+
 	if err != nil {
-		response.CommonFailed(CodeErrorBindJson, "Bind Json Error", c)
+		response.CommonFailed(CodeErrorBindJson, bindJsonError, c)
 		return
 	}
 	birthDay := pkg.StrToTime(basicInfo.BirthDay, "2006-01-02")
@@ -51,9 +60,33 @@ func CreateBasicInfo(c *gin.Context) {
 	basic.ResumeID.ResumeID = uuid.FromStringOrNil(basicInfo.ResumeID)
 
 	if err, basicInter := service.CreateBasicInfoService(basic); err != nil {
-		response.CommonFailed(CodeErrorDB, "DB Error", c)
+		response.CommonFailed(CodeErrorDB, dbError, c)
 		return
 	} else {
-		response.Created(CodeSuccessCommon, "Create Success", basicInter, c)
+		response.Created(CodeSuccessCommon, createSuccess, basicInter, c)
 	}
+}
+
+// DeleteBasicInfo 删除基本信息
+// @Summary 删除基本信息
+// @Title 删除基本信息
+// @Author 赵文卓
+// @Description 删除基本信息
+// @Tags basicInfo
+// @Param resume_id path int true "Resume ID"
+// @Success 204
+// @Failure 400 {object} response.Response
+// @Router /basic-info/{resume_id} [delete]
+func DeleteBasicInfo(c *gin.Context) {
+	lang := c.Query("lang")
+	i := &i18n.I18n{}
+	i.SetLang(lang)
+	dbError := i.Trans("response.dbError").ToStr()
+	resumeID := c.Param("id")
+	err := service.DeleteBasicInfoService(resumeID)
+	if err != nil {
+		response.CommonFailed(CodeErrorDB, dbError, c)
+		return
+	}
+	response.DeletedNoContent(c)
 }

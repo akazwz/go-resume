@@ -1,2 +1,4 @@
-test:
-  test1: Test1
+response:
+  bindJsonError: Bind Json Error
+  dbError: Database Error
+  createSuccess: Create Success

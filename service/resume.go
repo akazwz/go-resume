@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// CreateResumeService create resume by resume
 func CreateResumeService(resume *model.Resume) (err error, r *model.Resume) {
 	resume.ResumeID = uuid.NewV4()
 	resume.CreatedAt = time.Now()
@@ -14,9 +15,9 @@ func CreateResumeService(resume *model.Resume) (err error, r *model.Resume) {
 	return err, resume
 }
 
+// DeleteResumeService delete resume by resume id
 func DeleteResumeService(resumeId string) (err error) {
 	resume := model.Resume{ResumeID: uuid.FromStringOrNil(resumeId)}
 	err = global.GDB.Delete(&resume).Error
-	global.GDB.Raw("delete from ")
 	return
 }

@@ -1,6 +1,7 @@
 package api
 
 import (
+	"github.com/akazwz/go-i18n/i18n"
 	"github.com/akazwz/go-resume/model"
 	"github.com/akazwz/go-resume/model/request"
 	"github.com/akazwz/go-resume/model/response"
@@ -22,9 +23,16 @@ import (
 // @Failure 400 {object} response.Response
 // @Router /resume [post]
 func CreateResume(c *gin.Context) {
+	lang := c.Query("lang")
+	i := &i18n.I18n{}
+	i.SetLang(lang)
+	bindJsonError := i.Trans("response.bindJsonError").ToStr()
+	dbError := i.Trans("response.dbError").ToStr()
+	createSuccess := i.Trans("response.createSuccess").ToStr()
+
 	var resume request.Resume
 	if err := c.ShouldBindJSON(&resume); err != nil {
-		response.CommonFailed(CodeErrorBindJson, "Bind Json Error", c)
+		response.CommonFailed(CodeErrorBindJson, bindJsonError, c)
 		return
 	}
 
@@ -34,10 +42,10 @@ func CreateResume(c *gin.Context) {
 	}
 
 	if err, resumeInter := service.CreateResumeService(&r); err != nil {
-		response.CommonFailed(CodeErrorDB, "DB Error", c)
+		response.CommonFailed(CodeErrorDB, dbError, c)
 		return
 	} else {
-		response.Created(CodeSuccessCommon, "Success", resumeInter, c)
+		response.Created(CodeSuccessCommon, createSuccess, resumeInter, c)
 	}
 }
 
@@ -53,9 +61,14 @@ func CreateResume(c *gin.Context) {
 // @Router /resume/{resume_id} [delete]
 func DeleteResume(c *gin.Context) {
 	resumeID := c.Param("id")
+	lang := c.Query("lang")
+	i := &i18n.I18n{}
+	i.SetLang(lang)
+	dbError := i.Trans("response.dbError").ToStr()
+
 	err := service.DeleteResumeService(resumeID)
 	if err != nil {
-		response.CommonFailed(CodeErrorDB, "DB Error", c)
+		response.CommonFailed(CodeErrorDB, dbError, c)
 		return
 	}
 	response.DeletedNoContent(c)

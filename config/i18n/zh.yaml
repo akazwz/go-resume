@@ -1,2 +1,4 @@
-test:
-  test1: 测试1
+response:
+  bindJsonError: 绑定数据错误
+  dbError: 数据库错误
+  createSuccess: 创建成功
