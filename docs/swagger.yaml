@@ -138,6 +138,10 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/request.BasicInfo'
+      - description: Language
+        in: query
+        name: lang
+        type: string
       produces:
       - application/json
       responses:
@@ -152,6 +156,29 @@ paths:
       summary: 新建基本信息
       tags:
       - basicInfo
+  /basic-info/{resume_id}:
+    delete:
+      description: 删除基本信息
+      parameters:
+      - description: Resume ID
+        in: path
+        name: resume_id
+        required: true
+        type: string
+      - description: Language
+        in: query
+        name: lang
+        type: string
+      responses:
+        "204":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 删除基本信息
+      tags:
+      - basicInfo
   /resume:
     post:
       consumes:
@@ -164,6 +191,10 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/request.Resume'
+      - description: Language
+        in: query
+        name: lang
+        type: string
       produces:
       - application/json
       responses:
@@ -186,7 +217,11 @@ paths:
         in: path
         name: resume_id
         required: true
-        type: integer
+        type: string
+      - description: Language
+        in: query
+        name: lang
+        type: string
       responses:
         "204":
           description: ""

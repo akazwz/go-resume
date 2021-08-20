@@ -24,6 +24,7 @@ import (
 
 // @host localhost:8000
 // @BasePath /
+// swag init --parseDependency --parseInternal
 func main() {
 	fmt.Println("Hello Gin!")
 	// 初始化配置

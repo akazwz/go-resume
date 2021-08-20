@@ -54,6 +54,12 @@ var doc = `{
                         "schema": {
                             "$ref": "#/definitions/request.BasicInfo"
                         }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Language",
+                        "name": "lang",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -62,6 +68,41 @@ var doc = `{
                         "schema": {
                             "$ref": "#/definitions/model.BasicInfo"
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/basic-info/{resume_id}": {
+            "delete": {
+                "description": "删除基本信息",
+                "tags": [
+                    "basicInfo"
+                ],
+                "summary": "删除基本信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Resume ID",
+                        "name": "resume_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Language",
+                        "name": "lang",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
                     },
                     "400": {
                         "description": "Bad Request",
@@ -94,6 +135,12 @@ var doc = `{
                         "schema": {
                             "$ref": "#/definitions/request.Resume"
                         }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Language",
+                        "name": "lang",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -121,11 +168,17 @@ var doc = `{
                 "summary": "删除简历",
                 "parameters": [
                     {
-                        "type": "integer",
+                        "type": "string",
                         "description": "Resume ID",
                         "name": "resume_id",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Language",
+                        "name": "lang",
+                        "in": "query"
                     }
                 ],
                 "responses": {

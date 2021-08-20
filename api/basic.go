@@ -21,6 +21,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param basicInfo body request.BasicInfo true "json"
+// @Param lang query string false "Language"
 // @Success 201 {object} model.BasicInfo
 // @Failure 400 {object} response.Response
 // @Router /basic-info [post]
@@ -73,7 +74,8 @@ func CreateBasicInfo(c *gin.Context) {
 // @Author 赵文卓
 // @Description 删除基本信息
 // @Tags basicInfo
-// @Param resume_id path int true "Resume ID"
+// @Param resume_id path string true "Resume ID"
+// @Param lang query string false "Language"
 // @Success 204
 // @Failure 400 {object} response.Response
 // @Router /basic-info/{resume_id} [delete]

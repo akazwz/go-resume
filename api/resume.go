@@ -19,6 +19,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param Resume body request.Resume true "json"
+// @Param lang query string false "Language"
 // @Success 201 {object} model.Resume
 // @Failure 400 {object} response.Response
 // @Router /resume [post]
@@ -55,7 +56,8 @@ func CreateResume(c *gin.Context) {
 // @Author 赵文卓
 // @Description 删除简历
 // @Tags resume
-// @Param resume_id path int true "Resume ID"
+// @Param resume_id path string true "Resume ID"
+// @Param lang query string false "Language"
 // @Success 204
 // @Failure 400 {object} response.Response
 // @Router /resume/{resume_id} [delete]

@@ -1,7 +1,6 @@
 package initialize
 
 import (
-	"github.com/akazwz/go-resume/api"
 	"github.com/akazwz/go-resume/model/response"
 	"github.com/akazwz/go-resume/routers"
 	"github.com/gin-contrib/cors"
@@ -23,7 +22,6 @@ func Routers() *gin.Engine {
 	router.NoRoute(response.NotFound)
 	//go-swagger
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	router.GET("/i18n", api.I18nTest)
 	// Teapot
 	router.GET("teapot", response.Teapot)
 	routerGroup := router.Group("")

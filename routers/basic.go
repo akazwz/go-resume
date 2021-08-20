@@ -9,5 +9,6 @@ func InitBasicInfoRouter(r *gin.RouterGroup) {
 	basicInfoRouter := r.Group("/basic-info")
 	{
 		basicInfoRouter.POST("", api.CreateBasicInfo)
+		basicInfoRouter.DELETE("/:id", api.DeleteBasicInfo)
 	}
 }
